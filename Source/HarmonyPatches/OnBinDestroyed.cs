@@ -22,6 +22,7 @@ public static class OnBinDestroyed
     public static bool Prefix(Map __1, ThingComp __instance, ThingOwner ___innerContainer)
     {
         GameComponent_FilthCleaningTracker.Instance.Notify_FilthCleaned(___innerContainer, __1, __instance.parent.Position);
+        ___innerContainer.ClearAndDestroyContents();
         return false;
     }
 }

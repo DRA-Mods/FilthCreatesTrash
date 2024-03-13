@@ -32,7 +32,10 @@ public static class OnBinCleaned
     }
 
     private static void InterceptedClearAndDestroy(ThingOwner instance, DestroyMode destroyMode)
-        => GameComponent_FilthCleaningTracker.Instance.Notify_FilthCleaned(instance, destroyMode);
+    {
+        GameComponent_FilthCleaningTracker.Instance.Notify_FilthCleaned(instance, destroyMode);
+        instance.ClearAndDestroyContents(destroyMode);
+    }
 
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instr, MethodBase baseMethod)
     {
