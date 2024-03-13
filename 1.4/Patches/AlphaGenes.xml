@@ -23,7 +23,8 @@
                 <!-- Guaranteed reclaimed biopack -->
 
                 <li Class="PatchOperationAddModExtension">
-                    <xpath>Defs/ThingDef[defName='AG_FilthMucus' or defName='AG_TarBlood' or defName='AG_Filth_Acid' or defName='AG_Filth_CryoVomit' or defName='AG_Filth_CryoVomitPermanent' or defName='AG_Filth_CryoBlood' or defName='AG_Filth_CryoBloodPermanent']</xpath>
+                    <!-- AG_Filth_CryoVomitPermanent and AG_Filth_CryoBloodPermanent aren't filth. -->
+                    <xpath>Defs/ThingDef[defName='AG_FilthMucus' or defName='AG_TarBlood' or defName='AG_Filth_Acid' or defName='AG_Filth_CryoVomit' or defName='AG_Filth_CryoBlood']</xpath>
                     <value>
                         <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
                             <trashType>VRecyclingE_ReclaimedBiopack</trashType>
