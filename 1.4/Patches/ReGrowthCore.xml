@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+
+        <mods>
+            <li>ReGrowth: Core</li>
+        </mods>
+
+        <match Class="PatchOperationSequence">
+            <operations>
+
+                <!-- Guaranteed reclaimed biopack -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='RG_Filth_LeavesTreeOak' or defName='RG_Filth_LeavesTreePopolar' or defName='RG_Filth_LeavesTreeBirch']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VRecyclingE_ReclaimedBiopack</trashType>
+                        </li>
+                    </value>
+                </li>
+
+                <!-- Guaranteed neutroamine (unique case) -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='RG_Filth_Neutroamine']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>Neutroamine</trashType>
+                        </li>
+                    </value>
+                </li>
+
+            </operations>
+        </match>
+    </Operation>
+</Patch>

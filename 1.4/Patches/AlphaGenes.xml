@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+
+        <mods>
+            <li>Alpha Genes</li>
+        </mods>
+
+        <match Class="PatchOperationSequence">
+            <operations>
+
+                <!-- Guaranteed stabilized alloypack -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='AG_Filth_RubbleRock']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VRecyclingE_StabilizedAlloypack</trashType>
+                        </li>
+                    </value>
+                </li>
+
+                <!-- Guaranteed reclaimed biopack -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='AG_FilthMucus' or defName='AG_TarBlood' or defName='AG_Filth_Acid' or defName='AG_Filth_CryoVomit' or defName='AG_Filth_CryoVomitPermanent' or defName='AG_Filth_CryoBlood' or defName='AG_Filth_CryoBloodPermanent']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VRecyclingE_ReclaimedBiopack</trashType>
+                        </li>
+                    </value>
+                </li>
+
+                <!-- Guaranteed reactive chempack -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='AG_Filth_Fuel']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VRecyclingE_ReactiveChempack</trashType>
+                        </li>
+                    </value>
+                </li>
+
+            </operations>
+        </match>
+    </Operation>
+</Patch>

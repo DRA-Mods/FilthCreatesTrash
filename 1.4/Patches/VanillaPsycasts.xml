@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+
+        <mods>
+            <li>Vanilla Factions Expanded - Insectoids</li>
+        </mods>
+
+        <!-- Guaranteed stabilized alloypack -->
+
+        <match Class="PatchOperationAddModExtension">
+            <xpath>Defs/ThingDef[defName='VPE_Filth_Metal' or defName='VPE_Filth_Rock']</xpath>
+            <value>
+                <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                    <trashType>VRecyclingE_StabilizedAlloypack</trashType>
+                </li>
+            </value>
+        </match>
+
+    </Operation>
+</Patch>

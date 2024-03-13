@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+    <FilthCreatesTrashRequiresRestart>&lt;color=red&gt;&lt;b&gt;WARNING:&lt;/b&gt;&lt;/color&gt; Settings in this section require a restart after changing.</FilthCreatesTrashRequiresRestart>
+
+    <FilthCreatesTrashEnableTrashOnPawnCleaning>Create trash when pawns clean floor</FilthCreatesTrashEnableTrashOnPawnCleaning>
+    <FilthCreatesTrashEnableTrashOnPawnCleaningTooltip>Trash will be spawned when a pawn cleans enough filth by sweeping the floor. Includes compat for Common Sense cleaning jobs.</FilthCreatesTrashEnableTrashOnPawnCleaningTooltip>
+
+    <FilthCreatesTrashEnableTrashOnRainCleaning>Create trash when rain cleans filth</FilthCreatesTrashEnableTrashOnRainCleaning>
+    <FilthCreatesTrashEnableTrashOnRainCleaningTooltip>Trash will be spawned when rain cleans up filth off the floor. Not all filth can be cleaned this way.</FilthCreatesTrashEnableTrashOnRainCleaningTooltip>
+
+    <FilthCreatesTrashEnableTrashOnBinsCleaning>Create trash for trash bins (mod compat)</FilthCreatesTrashEnableTrashOnBinsCleaning>
+    <FilthCreatesTrashEnableTrashOnBinsCleaningTooltip>Trash bins from Vanille Furniture Expanded will create trash when cleaning filth. They are able to hold a limited amount of trash before they stop working due to being overfiled, and trash can be automatically emptied at specific tresholds.</FilthCreatesTrashEnableTrashOnBinsCleaningTooltip>
+
+    <FilthCreatesTrashEnableTrashOnSelfCleaning>Create trash for self cleaning floors (mod compat)</FilthCreatesTrashEnableTrashOnSelfCleaning>
+    <FilthCreatesTrashEnableTrashOnSelfCleaningTooltip>Self cleaning floors (feature supported by both Vanilla Expanded Framework and Biomes! Core) will produce trash when cleaning filth.</FilthCreatesTrashEnableTrashOnSelfCleaningTooltip>
+
+    <FilthCreatesTrashFilthBeforeTrash>Amount of filth needed to create trash</FilthCreatesTrashFilthBeforeTrash>
+    <FilthCreatesTrashFilthBeforeTrashTooltip>The amount of filth that the bin will have to clean before trash is created. When cleaning the amount of layers filth had is considered, so the thicker the filth was the more it will progress to spawning the next trash.</FilthCreatesTrashFilthBeforeTrashTooltip>
+
+    <FilthCreatesTrashRareTrashChance>Chance for rarer trash: {0_percentage}</FilthCreatesTrashRareTrashChance>
+    <FilthCreatesTrashRareTrashChanceTooltip>Chance that flith will count as a different type of trash instead of the basic one. Will be ignored if the trash is guaranteed of specific type (like chemfuel puddles always count as chemfuel trash). Progress to each trash type is counted separately.</FilthCreatesTrashRareTrashChanceTooltip>
+
+</LanguageData>

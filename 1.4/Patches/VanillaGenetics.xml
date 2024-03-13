@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+
+        <mods>
+            <li>Vanilla Genetics Expanded</li>
+        </mods>
+
+        <match Class="PatchOperationSequence">
+            <operations>
+
+                <!-- Guaranteed reclaimed biopack -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='GR_FilthMucus']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VRecyclingE_ReclaimedBiopack</trashType>
+                        </li>
+                    </value>
+                </li>
+
+                <!-- Guaranteed reactive chempack -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='GR_Filth_Fuel']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VRecyclingE_ReactiveChempack</trashType>
+                        </li>
+                    </value>
+                </li>
+
+            </operations>
+        </match>
+    </Operation>
+</Patch>

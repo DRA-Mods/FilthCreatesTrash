@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <operations>
+
+            <!-- Guaranteed stabilized alloypack -->
+
+            <li Class="PatchOperationAddModExtension">
+                <xpath>Defs/ThingDef[defName='SlagRubble' or defName='Filth_MachineBits']</xpath>
+                <value>
+                    <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                        <trashType>VRecyclingE_StabilizedAlloypack</trashType>
+                    </li>
+                </value>
+            </li>
+
+            <!-- Guaranteed reclaimed biopack -->
+
+            <li Class="PatchOperationAddModExtension">
+                <xpath>Defs/ThingDef[defName='SlagRubble' or defName='Filth_BloodInsect' or defName='Filth_AmnioticFluid' or defName='Filth_Slime' or defName='Filth_Vomit' or defName='Filth_CorpseBile' or defName='Filth_Hair']</xpath>
+                <value>
+                    <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                        <trashType>VRecyclingE_ReclaimedBiopack</trashType>
+                    </li>
+                </value>
+            </li>
+
+            <!-- Guaranteed reactive chempack -->
+
+            <li Class="PatchOperationAddModExtension">
+                <xpath>Defs/ThingDef[defName='Filth_Fuel']</xpath>
+                <value>
+                    <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                        <trashType>VRecyclingE_ReactiveChempack</trashType>
+                    </li>
+                </value>
+            </li>
+
+        </operations>
+    </Operation>
+</Patch>
