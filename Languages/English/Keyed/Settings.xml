@@ -21,4 +21,6 @@
     <FCT_RareTrashChance>Chance for rarer trash: {0_percentage}</FCT_RareTrashChance>
     <FCT_RareTrashChanceTooltip>Chance that flith will count as a different type of trash instead of the basic one. Will be ignored if the trash is guaranteed of specific type (like chemfuel puddles always count as chemfuel trash). Progress to each trash type is counted separately.</FCT_RareTrashChanceTooltip>
 
+    <FCT_ResetDefault>Restore default settings</FCT_ResetDefault>
+
 </LanguageData>

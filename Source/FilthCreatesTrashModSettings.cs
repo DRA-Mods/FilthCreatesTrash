@@ -7,17 +7,30 @@ namespace FilthCreatesTrash;
 
 public class FilthCreatesTrashModSettings : ModSettings
 {
-    public bool enableTrashOnPawnCleaning = true;
-    public bool enableTrashOnRainCleaning = false;
-    public bool enableTrashOnBinsCleaning = true;
-    public bool enableTrashOnSelfCleaning = false;
+    public bool enableTrashOnPawnCleaning;
+    public bool enableTrashOnRainCleaning;
+    public bool enableTrashOnBinsCleaning;
+    public bool enableTrashOnSelfCleaning;
 
     private const int DefaultFilthBeforeTrashCreated = 20;
-    public int filthBeforeTrashCreated = DefaultFilthBeforeTrashCreated;
-    public float rareTrashChance = 0.01f;
+    public int filthBeforeTrashCreated;
+    public float rareTrashChance;
 
     public Dictionary<ThingDef, float> rareTrashTypes = new();
     public Dictionary<ThingDef, ThingDef> guaranteedFilthToTrash = new();
+
+    public FilthCreatesTrashModSettings() => RestoreDefaults();
+
+    public void RestoreDefaults()
+    {
+        enableTrashOnPawnCleaning = true;
+        enableTrashOnRainCleaning = false;
+        enableTrashOnBinsCleaning = true;
+        enableTrashOnSelfCleaning = false;
+
+        filthBeforeTrashCreated = DefaultFilthBeforeTrashCreated;
+        rareTrashChance = 0.01f;
+    }
 
     public ThingDef GetTrashForFilth(Thing filth)
     {
@@ -96,6 +109,11 @@ public class FilthCreatesTrashModSettings : ModSettings
             1f,
             tooltip: "FCT_RareTrashChanceTooltip".Translate());
         rareTrashChance = GenMath.RoundTo(rareTrashChance, 0.01f);
+
+        listing.GapLine(24f);
+
+        if (listing.ButtonText("FCT_ResetDefault".Translate(), widthPct: 0.5f))
+            RestoreDefaults();
 
         listing.End();
     }
