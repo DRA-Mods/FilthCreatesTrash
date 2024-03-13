@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <packageId>Dra.FilthCreatesTrash</packageId>
-  <name>Filth Creates Trash</name>
-  <supportedVersions>
-    <li>1.4</li>
-  </supportedVersions>
-  <author>Sokyran, Hush</author>
-  <description>
+    <packageId>Dra.FilthCreatesTrash</packageId>
+    <name>Filth Creates Trash</name>
+    <supportedVersions>
+        <li>1.4</li>
+    </supportedVersions>
+    <author>Sokyran, Hush</author>
+    <description>
 Do you like my mods? You can support me on Ko-Fi: https://ko-fi.com/sokyran
 
+Addon to Vanilla Recycling Expanded - you need to have it installed and enabled!
 
-  </description>
-  <modDependencies>
-    <li>
-      <packageId>brrainz.harmony</packageId>
-      <displayName>Harmony</displayName>
-      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
-      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-    </li>
-    <li>
-      <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
-      <displayName>Vanilla Expanded Framework</displayName>
-      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</steamWorkshopUrl>
-      <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework/releases/latest</downloadUrl>
-    </li>
-    <li>
-      <packageId>VanillaExpanded.Recycling</packageId>
-      <displayName>Vanilla Recycling Expanded</displayName>
-      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=</steamWorkshopUrl>
-      <downloadUrl>https://github.com/Vanilla-Expanded/VanillaRecyclingExpanded/releases/latest</downloadUrl>
-    </li>
-    <li>
-      <packageId>Ludeon.RimWorld.Biotech</packageId>
-      <displayName>Biotech</displayName>
-    </li>
-  </modDependencies>
-  <loadAfter>
-    <li>Ludeon.RimWorld</li>
-    <li>Ludeon.Biotech</li>
-    <li>brrainz.harmony</li>
-    <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
-    <li>VanillaExpanded.VFECore</li>
-    <li>VanillaExpanded.Recycling</li>
-  </loadAfter>
+The idea for this mod is quite simple - cleaning filth off the ground will produce trash, which you'll need to properly take care of.
+
+Ways in which trash is generated (configurable):
+- Pawn sweeping floors
+- Rain cleaning filth (off by default)
+- Cleaning trash bins from Vanilla Furniture Expanded
+- Self-cleaning floors from Vanilla Expanded Framework or Biomes! Core (off by default)
+
+The majority of the trash will be the most basic trash. However, there's a small (configurable) chance to get a rare type of trash (like stabilized alloypacks). On top of that, some types of filth are guaranteed to only produce specific type of trash - biological filth will (in general) produce reclaimed biopacks, while chemfuel puddles will produce reactive chempacks.
+
+Includes built-in compat for a selection of mods.
+    </description>
+    <modDependencies>
+        <li>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+        </li>
+        <li>
+            <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+            <displayName>Vanilla Expanded Framework</displayName>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</steamWorkshopUrl>
+            <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework/releases/latest</downloadUrl>
+        </li>
+        <li>
+            <packageId>VanillaExpanded.Recycling</packageId>
+            <displayName>Vanilla Recycling Expanded</displayName>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=</steamWorkshopUrl>
+            <downloadUrl>https://github.com/Vanilla-Expanded/VanillaRecyclingExpanded/releases/latest</downloadUrl>
+        </li>
+        <li>
+            <packageId>Ludeon.RimWorld.Biotech</packageId>
+            <displayName>Biotech</displayName>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>Ludeon.RimWorld</li>
+        <li>Ludeon.Biotech</li>
+        <li>brrainz.harmony</li>
+        <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+        <li>VanillaExpanded.VFECore</li>
+        <li>VanillaExpanded.Recycling</li>
+    </loadAfter>
 </ModMetaData>
