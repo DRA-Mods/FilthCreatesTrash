@@ -59,42 +59,42 @@ public class FilthCreatesTrashModSettings : ModSettings
         listing.Begin(inRect);
         listing.ColumnWidth = 570f;
 
-        listing.Label("FilthCreatesTrashRequiresRestart".Translate());
+        listing.Label("FCT_RequiresRestart".Translate());
 
         listing.CheckboxLabeled(
-            "FilthCreatesTrashEnableTrashOnPawnCleaning".Translate(),
+            "FCT_EnableTrashOnPawnCleaning".Translate(),
             ref enableTrashOnPawnCleaning,
-            "FilthCreatesTrashEnableTrashOnPawnCleaningTooltip".Translate());
+            "FCT_EnableTrashOnPawnCleaningTooltip".Translate());
         listing.CheckboxLabeled(
-            "FilthCreatesTrashEnableTrashOnRainCleaning".Translate(),
+            "FCT_EnableTrashOnRainCleaning".Translate(),
             ref enableTrashOnRainCleaning,
-            "FilthCreatesTrashEnableTrashOnRainCleaningTooltip".Translate());
+            "FCT_EnableTrashOnRainCleaningTooltip".Translate());
         listing.CheckboxLabeled(
-            "FilthCreatesTrashEnableTrashOnBinsCleaning".Translate(),
+            "FCT_EnableTrashOnBinsCleaning".Translate(),
             ref enableTrashOnBinsCleaning,
-            "FilthCreatesTrashEnableTrashOnBinsCleaningTooltip".Translate());
+            "FCT_EnableTrashOnBinsCleaningTooltip".Translate());
         listing.CheckboxLabeled(
-            "FilthCreatesTrashEnableTrashOnSelfCleaning".Translate(),
+            "FCT_EnableTrashOnSelfCleaning".Translate(),
             ref enableTrashOnSelfCleaning,
-            "FilthCreatesTrashEnableTrashOnSelfCleaningTooltip".Translate());
+            "FCT_EnableTrashOnSelfCleaningTooltip".Translate());
 
         listing.GapLine(24f);
 
         string temp = null;
         listing.TextFieldNumericLabeled(
-            "FilthCreatesTrashFilthBeforeTrash".Translate(),
+            "FCT_FilthBeforeTrash".Translate(),
             ref filthBeforeTrashCreated,
             ref temp,
             1,
             int.MaxValue,
-            "FilthCreatesTrashFilthBeforeTrashTooltip".Translate());
+            "FCT_FilthBeforeTrashTooltip".Translate());
 
         rareTrashChance = listing.SliderLabeled(
-            "FilthCreatesTrashRareTrashChance".Translate(rareTrashChance),
+            "FCT_RareTrashChance".Translate(rareTrashChance),
             rareTrashChance,
             0f,
             1f,
-            tooltip: "FilthCreatesTrashRareTrashChanceTooltip".Translate());
+            tooltip: "FCT_RareTrashChanceTooltip".Translate());
         rareTrashChance = GenMath.RoundTo(rareTrashChance, 0.01f);
 
         listing.End();
