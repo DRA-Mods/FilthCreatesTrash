@@ -16,8 +16,6 @@ public static class OnTerrainFilthRemoval
     public static IEnumerable<MethodBase> TargetMethods()
     {
         IEnumerable<(string, string)> targets = new[]{ (compat: "Vanilla Expanded Framework", method: "VFECore.TerrainComp_SelfClean:FinishClean") };
-        if (ModsConfig.IsActive("BiomesTeam.BiomesCore") || ModsConfig.IsActive("BiomesTeam.BiomesCore_steam"))
-            targets = targets.Concat(("Biomes! Core", "BiomesCore.TerrainComp_SelfClean:FinishClean"));
 
         foreach (var (compatName, methodName) in targets)
         {
