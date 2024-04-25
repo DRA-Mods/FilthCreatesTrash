@@ -28,9 +28,11 @@
         <None Remove=".editorconfig"/>
         <None Remove="mono_crash.*.json"/>
         <None Include="..\About\**" LinkBase="Common\About"/>
-        <None Include="..\1.5\Defs\**" LinkBase="Common\Defs"/>
+        <None Include="..\Defs\**" LinkBase="Common\Defs"/>
+        <None Include="..\1.5\Defs\**" LinkBase="Common\Defs\1.5"/>
         <None Include="..\Languages\**" LinkBase="Common\Languages"/>
-        <None Include="..\1.5\Patches\**" LinkBase="Common\Patches"/>
+        <None Include="..\Patches\**" LinkBase="Common\Patches"/>
+        <None Include="..\1.5\Patches\**" LinkBase="Common\Patches\1.5"/>
     </ItemGroup>
 
     <ItemGroup>
