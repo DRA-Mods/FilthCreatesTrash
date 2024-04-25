@@ -10,16 +10,16 @@
     <FCT_EnableTrashOnRainCleaningTooltip>Trash will be spawned when rain cleans up filth off the floor. Not all filth can be cleaned this way.</FCT_EnableTrashOnRainCleaningTooltip>
 
     <FCT_EnableTrashOnBinsCleaning>Create trash for trash bins (mod compat)</FCT_EnableTrashOnBinsCleaning>
-    <FCT_EnableTrashOnBinsCleaningTooltip>Trash bins from Vanille Furniture Expanded will create trash when cleaning filth. They are able to hold a limited amount of trash before they stop working due to being overfiled, and trash can be automatically emptied at specific tresholds.</FCT_EnableTrashOnBinsCleaningTooltip>
+    <FCT_EnableTrashOnBinsCleaningTooltip>Trash bins from Vanilla Furniture Expanded will create trash when cleaning filth. They are able to hold a limited amount of trash before they stop working due to being overfilled, and trash can be automatically emptied at specific thresholds.</FCT_EnableTrashOnBinsCleaningTooltip>
 
-    <FCT_EnableTrashOnSelfCleaning>Create trash for self cleaning floors (mod compat)</FCT_EnableTrashOnSelfCleaning>
-    <FCT_EnableTrashOnSelfCleaningTooltip>Self cleaning floors (feature supported by both Vanilla Expanded Framework and Biomes! Core) will produce trash when cleaning filth.</FCT_EnableTrashOnSelfCleaningTooltip>
+    <FCT_EnableTrashOnSelfCleaning>Create trash for self-cleaning floors (mod compat)</FCT_EnableTrashOnSelfCleaning>
+    <FCT_EnableTrashOnSelfCleaningTooltip>Self cleaning floors (feature supported by both Vanilla Expanded Framework and (in 1.4 only) Biomes! Core) will produce trash when cleaning filth.</FCT_EnableTrashOnSelfCleaningTooltip>
 
     <FCT_FilthBeforeTrash>Amount of filth needed to create trash</FCT_FilthBeforeTrash>
     <FCT_FilthBeforeTrashTooltip>The amount of filth that the bin will have to clean before trash is created. When cleaning the amount of layers filth had is considered, so the thicker the filth was the more it will progress to spawning the next trash.</FCT_FilthBeforeTrashTooltip>
 
     <FCT_RareTrashChance>Chance for rarer trash: {0_percentage}</FCT_RareTrashChance>
-    <FCT_RareTrashChanceTooltip>Chance that flith will count as a different type of trash instead of the basic one. Will be ignored if the trash is guaranteed of specific type (like chemfuel puddles always count as chemfuel trash). Progress to each trash type is counted separately.</FCT_RareTrashChanceTooltip>
+    <FCT_RareTrashChanceTooltip>Chance that filth will count as a different type of trash instead of the basic one. Will be ignored if the trash is guaranteed of specific type (like chemfuel puddles always count as chemfuel trash). Progress to each trash type is counted separately.</FCT_RareTrashChanceTooltip>
 
     <FCT_ResetDefault>Restore default settings</FCT_ResetDefault>
 
