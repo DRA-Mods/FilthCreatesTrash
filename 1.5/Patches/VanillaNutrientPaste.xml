@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+
+        <mods>
+            <li>Vanilla Nutrient Paste Expanded</li>
+        </mods>
+
+        <!-- Guaranteed reclaimed biopack -->
+
+        <match Class="PatchOperationAddModExtension">
+            <xpath>Defs/ThingDef[defName='VNPE_Filth_Paste']</xpath>
+            <value>
+                <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                    <trashType>VRecyclingE_ReclaimedBiopack</trashType>
+                </li>
+            </value>
+        </match>
+
+    </Operation>
+</Patch>
