@@ -17,7 +17,7 @@
             <!-- Guaranteed reclaimed biopack -->
 
             <li Class="PatchOperationAddModExtension">
-                <xpath>Defs/ThingDef[defName='SlagRubble' or defName='Filth_BloodInsect' or defName='Filth_AmnioticFluid' or defName='Filth_Slime' or defName='Filth_Vomit' or defName='Filth_CorpseBile' or defName='Filth_Hair']</xpath>
+                <xpath>Defs/ThingDef[defName='SlagRubble' or defName='Filth_Blood' or defName='Filth_BloodInsect' or defName='Filth_AmnioticFluid' or defName='Filth_Slime' or defName='Filth_Vomit' or defName='Filth_CorpseBile' or defName='Filth_Hair']</xpath>
                 <value>
                     <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
                         <trashType>VRecyclingE_ReclaimedBiopack</trashType>
