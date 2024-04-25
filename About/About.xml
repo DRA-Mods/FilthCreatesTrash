@@ -18,7 +18,7 @@ Ways in which trash is generated (configurable):
 - Pawn sweeping floors
 - Rain cleaning filth (off by default)
 - Cleaning trash bins from Vanilla Furniture Expanded
-- Self-cleaning floors from Vanilla Expanded Framework or Biomes! Core (off by default)
+- Self-cleaning floors from Vanilla Expanded Framework (off by default)
 
 The majority of the trash will be the most basic trash. However, there's a small (configurable) chance to get a rare type of trash (like stabilized alloypacks). On top of that, some types of filth are guaranteed to only produce specific type of trash - biological filth will (in general) produce reclaimed biopacks, while chemfuel puddles will produce reactive chempacks.
 
