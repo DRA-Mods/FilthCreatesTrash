@@ -213,4 +213,31 @@ public static class MethodUtil
     public static MethodInfo MethodOf(Delegate del) => del.Method;
 
     #endregion
+
+    #region Member Names
+
+    public static string GetMemberName(MemberInfo method)
+    {
+        if (method == null)
+            return "null";
+
+        if (method.DeclaringType != null)
+            return GetTypeName(method.DeclaringType) + ":" + method.Name;
+
+        return method.Name;
+    }
+
+    public static string GetTypeName(Type type)
+    {
+        if (type == null)
+            return "null";
+
+        if (type.DeclaringType != null)
+            return GetTypeName(type.DeclaringType) + "." + type.Name;
+        if (type.Namespace != null)
+            return type.Namespace + "." + type.Name;
+        return type.Name;
+    }
+
+    #endregion
 }

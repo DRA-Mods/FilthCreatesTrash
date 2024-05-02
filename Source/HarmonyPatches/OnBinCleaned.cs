@@ -58,9 +58,6 @@ public static class OnBinCleaned
 
         const int expectedPatches = 1;
         if (patchCount != expectedPatches)
-        {
-            var name = (baseMethod.DeclaringType?.Namespace).NullOrEmpty() ? baseMethod.Name : $"{baseMethod.DeclaringType!.Name}:{baseMethod.Name}";
-            Log.Error($"[{FilthCreatesTrashModCore.ModName}] - patched incorrect number of calls to ThingOwner.ClearAndDestroyContents (expected: {expectedPatches}, patched: {patchCount}) for method {name}");
-        }
+            Log.Error($"[{FilthCreatesTrashModCore.ModName}] - patched incorrect number of calls to ThingOwner.ClearAndDestroyContents (expected: {expectedPatches}, patched: {patchCount}) for method {MethodUtil.GetMemberName(baseMethod)}");
     }
 }
