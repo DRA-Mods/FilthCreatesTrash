@@ -17,11 +17,28 @@ public static class MethodUtil
     private const string LocalFunctionInfix = "g__";
     private const string EnumerableStateMachineInfix = "d__";
 
-    public static MethodInfo GetLambda(Type parentType, string parentMethod = null, MethodType parentMethodType = MethodType.Normal, Type[] parentArgs = null, int lambdaOrdinal = 0)
+    public readonly struct MethodResult
+    {
+        public readonly MethodInfo result = null;
+        public readonly string error = string.Empty;
+
+        public MethodResult(MethodInfo result) => this.result = result;
+        public MethodResult(string error) => this.error = error;
+
+        public bool IsSuccess => result != null;
+        public bool IsError => result == null;
+
+        public static implicit operator MethodResult(MethodInfo result) => new(result);
+        public static implicit operator MethodResult(string error) => new(error);
+
+        public static implicit operator MethodInfo(MethodResult result) => result.result;
+    }
+
+    public static MethodResult GetLambda(Type parentType, string parentMethod = null, MethodType parentMethodType = MethodType.Normal, Type[] parentArgs = null, int lambdaOrdinal = 0)
     {
         var parent = GetMethod(parentType, parentMethod, parentMethodType, parentArgs);
         if (parent == null)
-            throw new Exception($"Couldn't find parent method ({parentMethodType}) {parentType}::{parentMethod}");
+            return $"Couldn't find parent method ({parentMethodType}) {parentType}::{parentMethod}";
 
         var parentId = GetMethodDebugId(parent);
 
@@ -48,16 +65,16 @@ public static class MethodUtil
             lambda = AccessTools.Method(sharedDisplayClass, lambdaNameFull);
 
         if (lambda == null)
-            throw new Exception($"Couldn't find lambda {lambdaOrdinal} in parent method {parentType}::{parent.Name} (parent method id: {parentId})");
+            return $"Couldn't find lambda {lambdaOrdinal} in parent method {parentType}::{parent.Name} (parent method id: {parentId})";
 
         return lambda;
     }
 
-    public static MethodInfo GetLocalFunc(Type parentType, string parentMethod = null, MethodType parentMethodType = MethodType.Normal, Type[] parentArgs = null, string localFunc = null)
+    public static MethodResult GetLocalFunc(Type parentType, string parentMethod = null, MethodType parentMethodType = MethodType.Normal, Type[] parentArgs = null, string localFunc = null)
     {
         var parent = GetMethod(parentType, parentMethod, parentMethodType, parentArgs);
         if (parent == null)
-            throw new Exception($"Couldn't find parent method ({parentMethodType}) {parentType}::{parentMethod}");
+            return $"Couldn't find parent method ({parentMethodType}) {parentType}::{parentMethod}";
 
         var parentId = GetMethodDebugId(parent);
 
@@ -78,10 +95,10 @@ public static class MethodUtil
             .ToArray();
 
         if (candidates.Length == 0)
-            throw new Exception($"Couldn't find local function {localFunc} in parent method {parentType}::{parent.Name} (parent method id: {parentId})");
+            return $"Couldn't find local function {localFunc} in parent method {parentType}::{parent.Name} (parent method id: {parentId})";
 
         if (candidates.Length > 1)
-            throw new Exception($"Ambiguous local function {localFunc} in parent method {parentType}::{parent.Name} (parent method id: {parentId})");
+            return $"Ambiguous local function {localFunc} in parent method {parentType}::{parent.Name} (parent method id: {parentId})";
 
         return candidates[0];
     }

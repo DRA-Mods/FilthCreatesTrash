@@ -28,7 +28,7 @@ public static class OnFilthThin
         if (FilthCreatesTrashModCore.settings.enableTrashOnPawnCleaning)
         {
             var method = MethodUtil.GetLambda(typeof(JobDriver_CleanFilth), nameof(JobDriver_CleanFilth.MakeNewToils), lambdaOrdinal: 1);
-            if (method != null)
+            if (method.IsSuccess)
                 yield return method;
             else
                 Log.Error($"[{FilthCreatesTrashModCore.ModName}] - trash generation on cleaning will not work, could not find {nameof(JobDriver_CleanFilth)}+<>c__DisplayClass7_0:<{nameof(JobDriver_CleanFilth.MakeNewToils)}>b__1");
@@ -39,26 +39,26 @@ public static class OnFilthThin
                 var type = AccessTools.TypeByName("CommonSense.JobDriver_DoBill_MakeNewToils_CommonSensePatch");
                 method = MethodUtil.GetLambda(type, "DoMakeToils", lambdaOrdinal: 22);
 
-                if (method != null)
+                if (method.IsSuccess)
                     yield return method;
                 else
-                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before working will not work, could not find CommonSense.JobDriver_DoBill_MakeNewToils_CommonSensePatch+<>c__DisplayClass1_4:<DoMakeToils>b__22");
+                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before working will not work. {method.error}");
 
                 type = AccessTools.TypeByName("CommonSense.JobDriver_PrepareToIngestToils_ToolUser_CommonSensePatch");
-                method = MethodUtil.GetLambda(type, "makeCleanToil", lambdaOrdinal: 1);
+                method = MethodUtil.GetLambda(type, "MakeCleanToil", lambdaOrdinal: 1);
 
-                if (method != null)
+                if (method.IsSuccess)
                     yield return method;
                 else
-                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before eating will not work, could not find CommonSense.JobDriver_PrepareToIngestToils_ToolUser_CommonSensePatch+<>c__DisplayClass5_0:<makeCleanToil>b__1");
+                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before eating will not work. {method.error}");
 
                 type = AccessTools.TypeByName("CommonSense.JobDriver_SocialRelax_MakeNewToils_CommonSensePatch");
-                method = MethodUtil.GetLambda(type, "_MakeToils", lambdaOrdinal: 7);
+                method = MethodUtil.GetLambda(type, "_MakeToils", lambdaOrdinal: 6);
 
-                if (method != null)
+                if (method.IsSuccess)
                     yield return method;
                 else
-                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before relaxing will not work, could not find CommonSense.JobDriver_SocialRelax_MakeNewToils_CommonSensePatch+<>c__DisplayClass5_1:<_MakeToils>b__7");
+                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before relaxing will not work. {method.error}");
             }
         }
     }
