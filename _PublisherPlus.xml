@@ -3,6 +3,9 @@
   <Excluded>
     <exclude>.git</exclude>
     <exclude>.idea</exclude>
+    <exclude>1.4\Assemblies\FilthCreatesTrash.pdb</exclude>
+    <exclude>1.5\Assemblies\FilthCreatesTrash.pdb</exclude>
+    <exclude>1.6\Assemblies\FilthCreatesTrash.pdb</exclude>
     <exclude>Source\obj</exclude>
   </Excluded>
 </Configuration>
