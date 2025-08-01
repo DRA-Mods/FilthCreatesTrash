@@ -5,6 +5,7 @@
     <supportedVersions>
         <li>1.4</li>
         <li>1.5</li>
+        <li>1.6</li>
     </supportedVersions>
     <author>Sokyran, Hush</author>
     <description>
@@ -17,6 +18,7 @@ The idea for this mod is quite simple - cleaning filth off the ground will produ
 Ways in which trash is generated (configurable):
 - Pawn sweeping floors
 - Rain cleaning filth (off by default)
+- Filth carried by pawns (off by default)
 - Cleaning trash bins from Vanilla Furniture Expanded
 - Self-cleaning floors from Vanilla Expanded Framework (off by default)
 

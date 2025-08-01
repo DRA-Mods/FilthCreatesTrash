@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+
+        <mods>
+            <li>Vanilla Factions Expanded - Insectoids 2</li>
+        </mods>
+
+        <match Class="PatchOperationSequence">
+            <operations>
+                <!-- Guaranteed (royal) insect jelly (special case) -->
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='VFEI2_Filth_InsectJelly']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>InsectJelly</trashType>
+                        </li>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='VFEI2_Filth_RoyalJelly']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VFEI2_RoyalInsectJelly</trashType>
+                        </li>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>Defs/ThingDef[defName='VFEI2_Filth_FlammableBile']</xpath>
+                    <value>
+                        <li Class="FilthCreatesTrash.DefExtensions.GuaranteedTrashExtension">
+                            <trashType>VRecyclingE_ReactiveChempack</trashType>
+                        </li>
+                    </value>
+                </li>
+
+            </operations>
+        </match>
+
+    </Operation>
+</Patch>

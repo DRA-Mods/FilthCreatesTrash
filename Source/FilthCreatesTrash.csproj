@@ -3,9 +3,9 @@
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <LangVersion>12.0</LangVersion>
+        <LangVersion>latest</LangVersion>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <OutputPath>..\1.5\Assemblies\</OutputPath>
+        <OutputPath>..\1.6\Assemblies\</OutputPath>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
         <DebugType>portable</DebugType>
@@ -16,12 +16,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Krafs.Publicizer" Version="2.2.1">
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4069" />
-        <PackageReference Include="Lib.Harmony" Version="2.3.3" ExcludeAssets="runtime" />
+        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4523" />
+        <PackageReference Include="Lib.Harmony" Version="2.3.6" ExcludeAssets="runtime" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,10 +29,10 @@
         <None Remove="mono_crash.*.json"/>
         <None Include="..\About\**" LinkBase="Common\About"/>
         <None Include="..\Defs\**" LinkBase="Common\Defs"/>
-        <None Include="..\1.5\Defs\**" LinkBase="Common\Defs\1.5"/>
+        <None Include="..\1.6\Defs\**" LinkBase="Common\Defs\1.6"/>
         <None Include="..\Languages\**" LinkBase="Common\Languages"/>
         <None Include="..\Patches\**" LinkBase="Common\Patches"/>
-        <None Include="..\1.5\Patches\**" LinkBase="Common\Patches\1.5"/>
+        <None Include="..\1.6\Patches\**" LinkBase="Common\Patches\1.6"/>
     </ItemGroup>
 
     <ItemGroup>

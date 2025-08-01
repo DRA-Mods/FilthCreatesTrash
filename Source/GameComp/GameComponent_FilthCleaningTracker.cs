@@ -27,14 +27,12 @@ public class GameComponent_FilthCleaningTracker : GameComponent
         GenPlace.TryPlaceThing(thing, pos, map, ThingPlaceMode.Near);
     }
 
-    public void Notify_FilthCleaned(Thing filth) => Notify_FilthCleaned(filth.Map, filth.Position, filth);
-
-    public void Notify_FilthCleaned(Map map, IntVec3 pos, Thing filth)
+    public void Notify_FilthCleaned(Map map, IntVec3 pos, Thing filth, int layers = 0)
     {
         if (!mapTrackers.TryGetValue(map.uniqueID, out var tracker))
             mapTrackers[map.uniqueID] = tracker = new TrashProgressTracker();
 
-        CleanFilthForTracker(map, tracker, pos, filth);
+        CleanFilthForTracker(map, tracker, pos, filth, layers);
     }
 
     public void Notify_FilthCleaned(ThingOwner thingOwner, DestroyMode originalDestroyMode = DestroyMode.Vanish)
@@ -75,10 +73,14 @@ public class GameComponent_FilthCleaningTracker : GameComponent
         }
     }
 
-    protected static void CleanFilthForTracker(Map map, TrashProgressTracker tracker, IntVec3 pos, Thing filth)
+    protected static void CleanFilthForTracker(Map map, TrashProgressTracker tracker, IntVec3 pos, Thing filth, int layers = 0)
     {
         var trash = FilthCreatesTrashModCore.settings.GetTrashForFilth(filth);
-        var counter = tracker.progress.GetValueOrDefault(trash, 0) + (filth as Filth)?.thickness ?? 1;
+
+        var thickness = (filth as Filth)?.thickness ?? 1;
+        if (layers <= 0 || layers > thickness)
+            layers = thickness;
+        var counter = tracker.progress.GetValueOrDefault(trash, 0) + layers;
 
         FilthCreatesTrashModCore.settings.ValidateFilthBeforeTrashCreated();
         while (counter >= FilthCreatesTrashModCore.settings.filthBeforeTrashCreated)

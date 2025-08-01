@@ -9,6 +9,9 @@
     <FCT_EnableTrashOnRainCleaning>Create trash when rain cleans filth</FCT_EnableTrashOnRainCleaning>
     <FCT_EnableTrashOnRainCleaningTooltip>Trash will be spawned when rain cleans up filth off the floor. Not all filth can be cleaned this way.</FCT_EnableTrashOnRainCleaningTooltip>
 
+    <FCT_EnableTrashOnCarriedFilthCleaning>Create trash when cleaning filth carried by pawns</FCT_EnableTrashOnCarriedFilthCleaning>
+    <FCT_EnableTrashOnCarriedFilthCleaningTooltip>Trash will be spawned when a trash that was accidentally picked up and is currently carried by a pawn is cleaned. This only applies when it's actually cleaned, rather than dropped back onto the ground.</FCT_EnableTrashOnCarriedFilthCleaningTooltip>
+
     <FCT_EnableTrashOnBinsCleaning>Create trash for trash bins (mod compat)</FCT_EnableTrashOnBinsCleaning>
     <FCT_EnableTrashOnBinsCleaningTooltip>Trash bins from Vanilla Furniture Expanded will create trash when cleaning filth. They are able to hold a limited amount of trash before they stop working due to being overfilled, and trash can be automatically emptied at specific thresholds.</FCT_EnableTrashOnBinsCleaningTooltip>
 

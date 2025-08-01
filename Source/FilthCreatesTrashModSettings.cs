@@ -9,6 +9,7 @@ public class FilthCreatesTrashModSettings : ModSettings
 {
     public bool enableTrashOnPawnCleaning;
     public bool enableTrashOnRainCleaning;
+    public bool enableTrashOnCarriedFilth;
     public bool enableTrashOnBinsCleaning;
     public bool enableTrashOnSelfCleaning;
 
@@ -25,6 +26,7 @@ public class FilthCreatesTrashModSettings : ModSettings
     {
         enableTrashOnPawnCleaning = true;
         enableTrashOnRainCleaning = false;
+        enableTrashOnCarriedFilth = false;
         enableTrashOnBinsCleaning = true;
         enableTrashOnSelfCleaning = false;
 
@@ -59,6 +61,7 @@ public class FilthCreatesTrashModSettings : ModSettings
 
         Scribe_Values.Look(ref enableTrashOnPawnCleaning, nameof(enableTrashOnPawnCleaning), true);
         Scribe_Values.Look(ref enableTrashOnRainCleaning, nameof(enableTrashOnRainCleaning), false);
+        Scribe_Values.Look(ref enableTrashOnCarriedFilth, nameof(enableTrashOnCarriedFilth), false);
         Scribe_Values.Look(ref enableTrashOnBinsCleaning, nameof(enableTrashOnBinsCleaning), true);
         Scribe_Values.Look(ref enableTrashOnSelfCleaning, nameof(enableTrashOnSelfCleaning), false);
 
@@ -82,6 +85,10 @@ public class FilthCreatesTrashModSettings : ModSettings
             "FCT_EnableTrashOnRainCleaning".Translate(),
             ref enableTrashOnRainCleaning,
             "FCT_EnableTrashOnRainCleaningTooltip".Translate());
+        listing.CheckboxLabeled(
+            "FCT_EnableTrashOnCarriedFilthCleaning".Translate(),
+            ref enableTrashOnCarriedFilth,
+            "FCT_EnableTrashOnCarriedFilthCleaningTooltip".Translate());
         listing.CheckboxLabeled(
             "FCT_EnableTrashOnBinsCleaning".Translate(),
             ref enableTrashOnBinsCleaning,

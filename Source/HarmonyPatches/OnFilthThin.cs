@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using FilthCreatesTrash.GameComp;
@@ -12,13 +13,24 @@ namespace FilthCreatesTrash.HarmonyPatches;
 public static class OnFilthThin
 {
     private static bool Prepare(MethodBase method)
-        => method != null || FilthCreatesTrashModCore.settings.enableTrashOnRainCleaning || FilthCreatesTrashModCore.settings.enableTrashOnPawnCleaning;
+    {
+        if (method != null)
+            return true;
+
+        if (FilthCreatesTrashModCore.settings.enableTrashOnRainCleaning ||
+            FilthCreatesTrashModCore.settings.enableTrashOnPawnCleaning ||
+            FilthCreatesTrashModCore.settings.enableTrashOnCarriedFilth ||
+            FilthCreatesTrashModCore.settings.enableTrashOnSelfCleaning)
+            return TargetMethods().Any();
+
+        return false;
+    }
 
     private static IEnumerable<MethodBase> TargetMethods()
     {
         if (FilthCreatesTrashModCore.settings.enableTrashOnRainCleaning)
         {
-            var method = AccessTools.DeclaredMethod(typeof(SteadyEnvironmentEffects), nameof(SteadyEnvironmentEffects.DoCellSteadyEffects));
+            var method = typeof(SteadyEnvironmentEffects).DeclaredMethod(nameof(SteadyEnvironmentEffects.DoCellSteadyEffects));
             if (method != null)
                 yield return method;
             else
@@ -36,44 +48,48 @@ public static class OnFilthThin
             // For the future: remove the `_steam` call once this gets fixed
             if (ModsConfig.IsActive("avilmask.CommonSense") || ModsConfig.IsActive("avilmask.CommonSense_steam"))
             {
-                var type = AccessTools.TypeByName("CommonSense.JobDriver_DoBill_MakeNewToils_CommonSensePatch");
-                method = MethodUtil.GetLambda(type, "DoMakeToils", lambdaOrdinal: 22);
+                var type = AccessTools.TypeByName("CommonSense.Utility");
+                method = MethodUtil.GetLambda(type, "CleanFilthToil", lambdaOrdinal: 1);
 
                 if (method.IsSuccess)
                     yield return method;
                 else
-                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before working will not work. {method.error}");
-
-                type = AccessTools.TypeByName("CommonSense.JobDriver_PrepareToIngestToils_ToolUser_CommonSensePatch");
-                method = MethodUtil.GetLambda(type, "MakeCleanToil", lambdaOrdinal: 1);
-
-                if (method.IsSuccess)
-                    yield return method;
-                else
-                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before eating will not work. {method.error}");
-
-                type = AccessTools.TypeByName("CommonSense.JobDriver_SocialRelax_MakeNewToils_CommonSensePatch");
-                method = MethodUtil.GetLambda(type, "_MakeToils", lambdaOrdinal: 6);
-
-                if (method.IsSuccess)
-                    yield return method;
-                else
-                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation on cleaning before relaxing will not work. {method.error}");
+                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation won't work on any Common Sense cleaning interactions. {method.error}");
             }
+        }
+
+        if (FilthCreatesTrashModCore.settings.enableTrashOnCarriedFilth)
+        {
+            var method = typeof(Pawn_FilthTracker).DeclaredMethod(nameof(Pawn_FilthTracker.ThinCarriedFilth));
+            if (method != null)
+                yield return method;
+            else
+                Log.Error($"[{FilthCreatesTrashModCore.ModName}] - trash generation on cleaning carried filth will not fork, could not find {nameof(Pawn_FilthTracker)}:{nameof(Pawn_FilthTracker.ThinCarriedFilth)}");
+        }
+
+        if (FilthCreatesTrashModCore.settings.enableTrashOnSelfCleaning)
+        {
+            const string methodName = "VEF.Maps.TerrainComp_SelfClean:FinishClean";
+            var method = AccessTools.DeclaredMethod(methodName);
+            if (method != null)
+                yield return method;
+            else
+                Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Vanilla Expanded Framework compat) trash generation for self-cleaning floors will not work, could not find {methodName}");
         }
     }
 
-    private static Filth RemoveFilthPassthrough(Filth filth)
+    private static Filth ThinFilthPassthrough(Filth filth)
     {
-        if (filth is { Spawned: true })
-            GameComponent_FilthCleaningTracker.Instance.Notify_FilthCleaned(filth);
+        var map = filth.MapHeld;
+        if (map != null)
+            GameComponent_FilthCleaningTracker.Instance.Notify_FilthCleaned(map, filth.PositionHeld, filth, 1);
         return filth;
     }
 
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instr, MethodBase baseMethod)
     {
         var target = AccessTools.DeclaredMethod(typeof(Filth), nameof(Filth.ThinFilth));
-        var passthrough = MethodUtil.MethodOf(RemoveFilthPassthrough);
+        var passthrough = MethodUtil.MethodOf(ThinFilthPassthrough);
         var patchCount = 0;
 
         foreach (var ci in instr)

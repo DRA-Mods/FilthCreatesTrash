@@ -6,7 +6,7 @@ using Verse;
 
 namespace FilthCreatesTrash.HarmonyPatches;
 
-[HarmonyPatch("CompBinClean", nameof(ThingComp.PostDestroy))]
+[HarmonyPatch("VanillaFurnitureEC.CompBinClean", nameof(ThingComp.PostDestroy))]
 public static class OnBinDestroyed
 {
     public static bool Prepare(MethodBase method)
@@ -14,7 +14,9 @@ public static class OnBinDestroyed
         // Only do a mod check for initial pass (is enabled globally)
         // Also for the future: remove the `_steam` call once this gets fixed
         if (method == null)
-            return FilthCreatesTrashModCore.settings.enableTrashOnBinsCleaning && (ModsConfig.IsActive("VanillaExpanded.VFECore") || ModsConfig.IsActive("VanillaExpanded.VFECore_steam"));
+            return FilthCreatesTrashModCore.settings.enableTrashOnBinsCleaning &&
+                   (ModsConfig.IsActive("VanillaExpanded.VFECore") || ModsConfig.IsActive("VanillaExpanded.VFECore_steam")) &&
+                   AccessTools.DeclaredMethod($"VanillaFurnitureEC.CompBinClean:{nameof(ThingComp.PostDestroy)}") != null;
         // Return true if a method is not null (is enabled for specific method)
         return true;
     }
