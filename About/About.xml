@@ -16,9 +16,9 @@ Add-on to Vanilla Recycling Expanded - you need to have it installed and enabled
 The idea for this mod is quite simple - cleaning filth off the ground will produce trash, which you'll need to properly take care of.
 
 Ways in which trash is generated (configurable):
-- Pawn sweeping floors
+- Pawns sweeping floors
 - Rain cleaning filth (off by default)
-- Filth carried by pawns (off by default)
+- Filth carried by pawns is cleaned (off by default)
 - Cleaning trash bins from Vanilla Furniture Expanded
 - Self-cleaning floors from Vanilla Expanded Framework (off by default)
 
