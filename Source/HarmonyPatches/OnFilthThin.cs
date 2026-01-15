@@ -6,6 +6,7 @@ using FilthCreatesTrash.GameComp;
 using HarmonyLib;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace FilthCreatesTrash.HarmonyPatches;
 
@@ -54,6 +55,16 @@ public static class OnFilthThin
                     yield return method;
                 else
                     Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Common Sense compat) trash generation won't work on any Common Sense cleaning interactions. {method.error}");
+            }
+
+            if (ModLister.AnyModActiveNoSuffix(["Cerule.CleaningAreaRelaunched"]))
+            {
+                var type = AccessTools.TypeByName("CleaningAreaRelaunched.JobDriver_CleanFilth_CleaningAreaRelaunched");
+                method = MethodUtil.GetLambda(type, nameof(JobDriver.MakeNewToils), lambdaOrdinal: 1);
+                if (method.IsSuccess)
+                    yield return method;
+                else
+                    Log.Error($"[{FilthCreatesTrashModCore.ModName}] - (Cleaning Area Relaunched compat) trash generation won't work on any Cleaning Area Relaunched cleaning interactions. {method.error}");
             }
         }
 
