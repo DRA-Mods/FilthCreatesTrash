@@ -45,8 +45,7 @@ public static class OnFilthThin
             else
                 Log.Error($"[{FilthCreatesTrashModCore.ModName}] - trash generation on cleaning will not work, could not find {nameof(JobDriver_CleanFilth)}+<>c__DisplayClass7_0:<{nameof(JobDriver_CleanFilth.MakeNewToils)}>b__1");
 
-            // For the future: remove the `_steam` call once this gets fixed
-            if (ModsConfig.IsActive("avilmask.CommonSense") || ModsConfig.IsActive("avilmask.CommonSense_steam"))
+            if (ModLister.AnyModActiveNoSuffix(["avilmask.CommonSense"]))
             {
                 var type = AccessTools.TypeByName("CommonSense.Utility");
                 method = MethodUtil.GetLambda(type, "CleanFilthToil", lambdaOrdinal: 1);

@@ -12,10 +12,9 @@ public static class OnBinDestroyed
     public static bool Prepare(MethodBase method)
     {
         // Only do a mod check for initial pass (is enabled globally)
-        // Also for the future: remove the `_steam` call once this gets fixed
         if (method == null)
             return FilthCreatesTrashModCore.settings.enableTrashOnBinsCleaning &&
-                   (ModsConfig.IsActive("VanillaExpanded.VFECore") || ModsConfig.IsActive("VanillaExpanded.VFECore_steam")) &&
+                   ModLister.AllModsActiveNoSuffix(["VanillaExpanded.VFECore"]) &&
                    AccessTools.DeclaredMethod($"VanillaFurnitureEC.CompBinClean:{nameof(ThingComp.PostDestroy)}") != null;
         // Return true if a method is not null (is enabled for specific method)
         return true;
